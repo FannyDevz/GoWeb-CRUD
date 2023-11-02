@@ -17,7 +17,7 @@ func Database() {
 	host := "localhost"
 	port := 3307
 
-	db, err := sql.Open(database, username+":"+password+"@tcp("+host+":"+strconv.Itoa(port)+")/"+dbname)
+	db, err := sql.Open(database, username+":"+password+"@tcp("+host+":"+strconv.Itoa(port)+")/"+dbname+"?parseTime=true")
 	if err != nil {
 		panic(err)
 	}
