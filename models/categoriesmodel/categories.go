@@ -67,3 +67,8 @@ func Update(id int, category entities.Category) bool {
 
 	return result > 0
 }
+
+func Delete(id int) error {
+	_, err := config.DB.Exec("DELETE FROM categories WHERE id=?", id)
+	return err
+}

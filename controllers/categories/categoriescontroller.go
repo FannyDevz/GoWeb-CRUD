@@ -76,4 +76,15 @@ func Edit(w http.ResponseWriter, r *http.Request) {
 }
 func Delete(w http.ResponseWriter, r *http.Request) {
 
+	idStr := r.FormValue("id")
+	id, err := strconv.Atoi(idStr)
+	if err != nil {
+		panic(err)
+	}
+
+	if err := categoriesmodel.Delete(id); err != nil {
+		panic(err)
+	}
+	http.Redirect(w, r, "/categories", http.StatusSeeOther)
+
 }
